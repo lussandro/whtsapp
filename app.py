@@ -5,6 +5,12 @@ app = Flask(__name__)
 print("Creating whtsapp instance")
 bot = WhatsAppBot()
 
+@app.route('/get_unread_messages', methods=['GET'])
+def get_unread_messages():
+    messages = bot.get_unread_messages()
+    return jsonify({'messages': messages})
+
+
 @app.route('/send_message', methods=['POST'])
 def send_message():
     data = request.json
