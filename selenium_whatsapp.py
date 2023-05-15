@@ -57,16 +57,21 @@ class WhatsAppBot:
             return False
 
     def send_message(self, contact_name, message):
-        search_input = self.driver.find_element(By.CSS_SELECTOR, "._3FRCZ")
-        search_input.clear()
-        search_input.send_keys(contact_name)
-        time.sleep(1)
+        #search_input = self.driver.find_element(By.CSS_SELECTOR, "._2vDPL")
+        #search_input.clear()
+        search_input = self.driver.get("https://wa.me/5548991286399")
+        time.sleep(2)
+        
+        botao = self.driver.find_element(By.NAME, "name")
+        botao.click()
+        time.sleep(5)
+        search_input.send_keys(message)
+        
+        # contact = self.driver.find_element(By.CSS_SELECTOR, "._8nE1Y")
+        # contact.click()
+        # time.sleep(1)
 
-        contact = self.driver.find_element(By.CSS_SELECTOR, "._2UaNq")
-        contact.click()
-        time.sleep(1)
-
-        input_box = self.driver.find_element(By.CSS_SELECTOR, "._3uMse")
+        input_box = self.driver.find_element(By.CSS_SELECTOR, "._3Uu1_")
         input_box.send_keys(message)
         input_box.send_keys(Keys.RETURN)
 
